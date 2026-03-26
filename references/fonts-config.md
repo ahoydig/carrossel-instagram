@@ -1,5 +1,7 @@
 # Configuração de Fontes
 
+As fontes **Nofex** e **Crankdat** foram criadas por [@flavioahoy](https://instagram.com/flavioahoy). Incluídas nesta skill como fontes padrão para headlines e accent.
+
 ## Fontes locais
 
 | Uso | Família | Arquivo | Caminho sistema |

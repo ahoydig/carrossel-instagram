@@ -1,6 +1,8 @@
 # Carrossel Instagram — Skill para Claude Code
 
-Skill que gera carrossis profissionais para Instagram via HTML renderizado como imagem (Playwright). Pipeline de 4 gates com aprovacao em cada etapa.
+por [@flavioahoy](https://instagram.com/flavioahoy)
+
+Skill que gera carrosseis profissionais para Instagram via HTML renderizado como imagem (Playwright). Pipeline de 4 gates com aprovacao em cada etapa.
 
 ## O que faz
 
@@ -50,7 +52,7 @@ cp -r carrossel-instagram ~/.claude/skills/carrossel-instagram
 
 ### 2. Fontes (opcional)
 
-A skill usa as fontes **Nofex** (headlines) e **Crankdat** (accent). Se voce tiver essas fontes, instale em `~/Library/Fonts/`.
+A skill usa as fontes **Nofex** e **Crankdat**, criadas por [@flavioahoy](https://instagram.com/flavioahoy). Se voce tiver essas fontes, instale em `~/Library/Fonts/`.
 
 Se nao tiver, a skill usa fallbacks automaticos do Google Fonts:
 - Nofex → Bebas Neue
