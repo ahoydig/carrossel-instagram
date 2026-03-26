@@ -50,13 +50,15 @@ Ou copie a pasta manualmente:
 cp -r carrossel-instagram ~/.claude/skills/carrossel-instagram
 ```
 
-### 2. Fontes (opcional)
+### 2. Fontes
 
-A skill usa as fontes **Nofex** e **Crankdat**, criadas por [@flavioahoy](https://instagram.com/flavioahoy). Se voce tiver essas fontes, instale em `~/Library/Fonts/`.
+A skill pergunta quais fontes voce quer usar e sugere 5 combinacoes prontas do Google Fonts (gratuitas). Se voce tiver fontes proprias (.ttf/.otf), pode usar tambem.
 
-Se nao tiver, a skill usa fallbacks automaticos do Google Fonts:
-- Nofex → Bebas Neue
-- Crankdat → Space Grotesk
+Combinacoes sugeridas incluem:
+- **Bebas Neue + Caveat** (versatil)
+- **Oswald + Space Grotesk** (tech)
+- **Anton + Permanent Marker** (viral)
+- E mais — veja `references/fonts-config.md`
 
 ### 3. Playwright
 
@@ -97,7 +99,7 @@ carrossel-instagram/
 - **Flexbox centralizado** — elementos principais no fluxo, nunca `position: absolute`
 - **Background rico** — gradiente + textura + logo real com blur (nunca gradiente liso)
 - **Screenshots reais** — sempre buscar de fontes reais, nunca criar SVGs genericos
-- **Crankdat comments** — frases curtas com personalidade, rotacionadas, sem parenteses
+- **Accent comments** — frases curtas com personalidade, rotacionadas, sem parenteses
 - **Portugues natural** — tom de amigo que descobriu algo bom, nunca guru ou professor
 
 ## Licenca

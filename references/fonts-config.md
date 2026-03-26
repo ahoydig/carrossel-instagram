@@ -1,97 +1,104 @@
 # Configuração de Fontes
 
-As fontes **Nofex** e **Crankdat** foram criadas por [@flavioahoy](https://instagram.com/flavioahoy). Incluídas nesta skill como fontes padrão para headlines e accent.
+A skill usa 3 slots de fonte. No Gate 1, pergunte ao usuário quais fontes ele quer usar e sugira combinações.
 
-## Fontes locais
+## Slots
 
-| Uso | Família | Arquivo | Caminho sistema |
-|-----|---------|---------|-----------------|
-| Headlines | Nofex | Nofex.ttf | ~/Library/Fonts/ |
-| Headlines (variação) | Nofex Outline | Nofex-Outline.ttf | ~/Library/Fonts/ |
-| Accent/Destaques | Crankdat Regular | Crankdat-Regular.ttf | ~/Library/Fonts/ |
-| Accent/Destaques Bold | Crankdat Bold | Crankdat-Bold.ttf | ~/Library/Fonts/ |
+| Slot | Função | Exemplo |
+|------|--------|---------|
+| **Headline** | Títulos grandes, bold, display | Bebas Neue, Oswald, Anton |
+| **Accent** | Comentários com personalidade, handwritten ou quirky | Space Grotesk, Caveat, Permanent Marker |
+| **Body** | Texto corrido, legível | Inter (fixo, Google Fonts) |
 
-## Fonte universal (Google Fonts)
+## Combinações sugeridas
 
-| Uso | Família | Import |
-|-----|---------|--------|
-| Body | Inter | `@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');` |
+Apresente 2-3 combinações ao usuário no Gate 1. Todas são do Google Fonts (gratuitas, sem instalação).
 
-## Fallback para outros usuários
+### 1. Bold + Handwritten (versátil)
+```
+Headline: Bebas Neue
+Accent:   Caveat
+Body:     Inter
+```
+Melhor para: a maioria dos carrosséis. Clean, impactante, com toque humano.
 
-Quando as fontes locais não estiverem instaladas:
+### 2. Industrial + Grotesk (tech/moderno)
+```
+Headline: Oswald
+Accent:   Space Grotesk
+Body:     Inter
+```
+Melhor para: tech, IA, automação, SaaS.
 
-| Uso | Fallback Google Fonts | Import |
-|-----|----------------------|--------|
-| Headlines | Bebas Neue | `@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');` |
-| Accent | Space Grotesk | `@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');` |
+### 3. Impact + Playful (viral/energia)
+```
+Headline: Anton
+Accent:   Permanent Marker
+Body:     Inter
+```
+Melhor para: conteúdo viral, polêmica, hot takes, energia.
 
-## Setup antes da primeira geração
+### 4. Serif + Mono (editorial/premium)
+```
+Headline: Playfair Display
+Accent:   JetBrains Mono
+Body:     Inter
+```
+Melhor para: storytelling, estudo de caso, conteúdo premium.
 
-### 1. Verificar fontes locais
+### 5. Condensed + Rounded (clean/minimal)
+```
+Headline: Barlow Condensed
+Accent:   Nunito
+Body:     Inter
+```
+Melhor para: tutorial, educativo, comparativo.
 
+## Fontes locais do usuário
+
+Se o usuário tiver fontes próprias (.ttf ou .otf), usar essas como prioridade:
+
+### 1. Verificar se existem
 ```bash
-ls ~/Library/Fonts/Nofex.ttf 2>/dev/null && echo "LOCAL" || echo "FALLBACK"
+ls ~/Library/Fonts/NomeDaFonte.ttf 2>/dev/null && echo "LOCAL" || echo "GOOGLE FONTS"
 ```
 
-### 2. Se LOCAL: copiar fontes para diretório de trabalho
-
+### 2. Copiar pro diretório de trabalho
 ```bash
 mkdir -p ./fonts
-cp ~/Library/Fonts/Nofex.ttf ./fonts/
-cp ~/Library/Fonts/Nofex-Outline.ttf ./fonts/
-cp ~/Library/Fonts/Crankdat-Regular.ttf ./fonts/
-cp ~/Library/Fonts/Crankdat-Bold.ttf ./fonts/
+cp ~/Library/Fonts/FonteHeadline.ttf ./fonts/
+cp ~/Library/Fonts/FonteAccent.ttf ./fonts/
 ```
 
-### 3. CSS para modo LOCAL
-
+### 3. CSS para fontes locais
 ```css
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 @font-face {
-  font-family: 'Nofex';
-  src: url('./fonts/Nofex.ttf') format('truetype');
+  font-family: 'HeadlineFont';
+  src: url('./fonts/FonteHeadline.ttf') format('truetype');
 }
 @font-face {
-  font-family: 'Nofex Outline';
-  src: url('./fonts/Nofex-Outline.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'Crankdat';
-  src: url('./fonts/Crankdat-Regular.ttf') format('truetype');
-  font-weight: normal;
-}
-@font-face {
-  font-family: 'Crankdat';
-  src: url('./fonts/Crankdat-Bold.ttf') format('truetype');
-  font-weight: bold;
+  font-family: 'AccentFont';
+  src: url('./fonts/FonteAccent.ttf') format('truetype');
 }
 ```
 
-### 4. CSS para modo FALLBACK
-
+### 4. CSS para Google Fonts (sem fontes locais)
 ```css
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bebas+Neue&family=Space+Grotesk:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bebas+Neue&family=Caveat:wght@400;700&display=swap');
 ```
+
+Ajustar o import conforme a combinação escolhida.
 
 ### 5. Font-family declarations
-
 ```css
-/* Modo LOCAL */
---font-headline: 'Nofex', 'Bebas Neue', sans-serif;
---font-headline-outline: 'Nofex Outline', 'Bebas Neue', sans-serif;
---font-accent: 'Crankdat', 'Space Grotesk', sans-serif;
---font-body: 'Inter', sans-serif;
-
-/* Modo FALLBACK (mesma declaration, o browser resolve) */
---font-headline: 'Nofex', 'Bebas Neue', sans-serif;
---font-headline-outline: 'Nofex Outline', 'Bebas Neue', sans-serif;
---font-accent: 'Crankdat', 'Space Grotesk', sans-serif;
+--font-headline: 'HeadlineFont', 'Bebas Neue', sans-serif;
+--font-accent: 'AccentFont', 'Caveat', cursive;
 --font-body: 'Inter', sans-serif;
 ```
 
-As declarations são as mesmas. A diferença é se os @font-face das fontes locais estão presentes ou não. Se não estiverem, o browser cai automaticamente no fallback.
+O primeiro valor é a fonte local (se existir), o segundo é o fallback do Google Fonts.
 
 ## Tamanhos recomendados
 
@@ -101,7 +108,7 @@ As declarations são as mesmas. A diferença é se os @font-face das fontes loca
 | Headline slides internos | 56-72px | 52-68px | 48-60px |
 | Subtítulo | 28-36px | 26-34px | 24-30px |
 | Body text | 22-28px | 20-26px | 18-24px |
-| Label/accent (Crankdat) | 14-18px | 13-17px | 12-16px |
+| Accent comment | 14-18px | 13-17px | 12-16px |
 | @handle | 16-20px | 15-19px | 14-18px |
 
 Estes são ranges. Ajustar conforme quantidade de texto no slide.

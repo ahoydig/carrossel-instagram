@@ -1,6 +1,6 @@
-# Efeitos Tipográficos — Headlines NOFEX
+# Efeitos Tipográficos — Headlines
 
-Catálogo de efeitos CSS para aplicar na fonte NOFEX nas headlines dos slides. O efeito é escolhido no Gate 3 com base no mood/paleta do carrossel. As cores devem ser adaptadas à paleta aprovada.
+Catálogo de efeitos CSS para aplicar na fonte headline dos slides. O efeito é escolhido no Gate 3 com base no mood/paleta do carrossel. As cores devem ser adaptadas à paleta aprovada. Substituir `var(--font-headline)` pela fonte escolhida no Gate 1.
 
 ---
 
@@ -10,7 +10,7 @@ Texto com degradê de cores. Versátil, funciona com qualquer paleta.
 
 ```css
 .headline {
-  font-family: 'Nofex', 'Bebas Neue', sans-serif;
+  font-family: var(--font-headline);
   font-size: 80px;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -28,13 +28,13 @@ Texto com degradê de cores. Versátil, funciona com qualquer paleta.
 
 ## 2. Dupla Camada (Fill + Outline)
 
-NOFEX preenchida + NOFEX Outline sobrepostas. Efeito premium e sofisticado.
+Headline preenchida + variação outline sobrepostas. Efeito premium e sofisticado. Funciona melhor com fontes que tenham versão outline disponível.
 
 ```css
 .headline-container { position: relative; }
 
 .headline-fill {
-  font-family: 'Nofex', 'Bebas Neue', sans-serif;
+  font-family: var(--font-headline);
   font-size: 80px;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -44,7 +44,7 @@ NOFEX preenchida + NOFEX Outline sobrepostas. Efeito premium e sofisticado.
 }
 
 .headline-outline {
-  font-family: 'Nofex Outline', 'Bebas Neue', sans-serif;
+  font-family: var(--font-headline-outline);
   font-size: 80px;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -74,7 +74,7 @@ Gradiente multi-stop simulando reflexo metálico.
 
 ```css
 .headline {
-  font-family: 'Nofex', 'Bebas Neue', sans-serif;
+  font-family: var(--font-headline);
   font-size: 80px;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -97,7 +97,7 @@ Texto com brilho neon via text-shadow múltiplo.
 
 ```css
 .headline {
-  font-family: 'Nofex', 'Bebas Neue', sans-serif;
+  font-family: var(--font-headline);
   font-size: 80px;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -121,7 +121,7 @@ Gradiente vertical de quente para escuro.
 
 ```css
 .headline {
-  font-family: 'Nofex', 'Bebas Neue', sans-serif;
+  font-family: var(--font-headline);
   font-size: 80px;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -145,7 +145,7 @@ Cor sólida com sombra offset que dá profundidade. O mais versátil.
 
 ```css
 .headline {
-  font-family: 'Nofex', 'Bebas Neue', sans-serif;
+  font-family: var(--font-headline);
   font-size: 80px;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -163,11 +163,11 @@ Cor sólida com sombra offset que dá profundidade. O mais versátil.
 
 ## 7. Outline Glow
 
-Usa a NOFEX Outline com brilho. Efeito futurista e clean.
+Usa a versão outline da fonte headline com brilho. Efeito futurista e clean. Se a fonte não tiver versão outline, usar `-webkit-text-stroke` como alternativa.
 
 ```css
 .headline {
-  font-family: 'Nofex Outline', 'Bebas Neue', sans-serif;
+  font-family: var(--font-headline-outline);
   font-size: 80px;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -185,13 +185,13 @@ Usa a NOFEX Outline com brilho. Efeito futurista e clean.
 
 ## 8. Offset Duplo
 
-Duas camadas da mesma NOFEX com deslocamento. Bold e dinâmico.
+Duas camadas da mesma fonte headline com deslocamento. Bold e dinâmico.
 
 ```css
 .headline-container { position: relative; }
 
 .headline-back {
-  font-family: 'Nofex', 'Bebas Neue', sans-serif;
+  font-family: var(--font-headline);
   font-size: 80px;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -202,7 +202,7 @@ Duas camadas da mesma NOFEX com deslocamento. Bold e dinâmico.
 }
 
 .headline-front {
-  font-family: 'Nofex', 'Bebas Neue', sans-serif;
+  font-family: var(--font-headline);
   font-size: 80px;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -230,7 +230,7 @@ Duas camadas da mesma NOFEX com deslocamento. Bold e dinâmico.
 2. Consultar "Melhor para" e "Combina com" de cada efeito
 3. Selecionar 1-2 opções
 4. Apresentar ao usuário com preview no slide 1
-5. O efeito aprovado é aplicado em TODOS os slides que têm headline NOFEX
+5. O efeito aprovado é aplicado em TODOS os slides que têm headline
 
 ## Adaptação de cores
 

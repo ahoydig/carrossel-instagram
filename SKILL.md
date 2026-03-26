@@ -3,7 +3,7 @@ name: carrossel-instagram
 description: >
   Gera carrosséis profissionais para Instagram via HTML-to-Image (Playwright).
   Suporta formatos 3:4, 4:5 e 1:1. Captura screenshots automaticamente de URLs.
-  Templates pré-definidos com classificação viral. Efeitos tipográficos na fonte NOFEX.
+  Templates pré-definidos com classificação viral. Efeitos tipográficos customizáveis.
   Use quando o usuário mencionar: carrossel, carousel, criar post, post instagram,
   slides, conteúdo instagram, carrossel viral, post viral, criar carrossel,
   montar carrossel, gerar carrossel, instagram post, fazer um post.
@@ -39,7 +39,7 @@ Cada gate exige aprovação explícita do usuário antes de prosseguir. Nunca pu
 
 ### Coleta obrigatória
 
-Não avance sem: **Objetivo**, **Template** (ler `references/templates.md`), **Formato** (3:4, 4:5 ou 1:1), **@handle**.
+Não avance sem: **Objetivo**, **Template** (ler `references/templates.md`), **Formato** (3:4, 4:5 ou 1:1), **@handle**, **Fontes** (ler `references/fonts-config.md` e sugerir combinações).
 
 ### Regras de conteúdo
 
@@ -113,7 +113,7 @@ Propor: 2-3 paletas, efeito tipográfico, mapa de layouts, preview do slide 1.
 
 O conteúdo dos slides DEVE usar flexbox. NUNCA usar `position: absolute` para headline, body text, screenshots ou visuais.
 
-**Position absolute permitido APENAS para:** Crankdat comments, @handle, background blur, badges decorativos.
+**Position absolute permitido APENAS para:** accent comments, @handle, background blur, badges decorativos.
 
 ### Estrutura obrigatória do body
 
@@ -127,7 +127,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 70px;         /* 100px na capa, 70px nos slides de conteúdo */
-  position: relative; /* pra elementos absolute como Crankdat e handle */
+  position: relative; /* pra elementos absolute como accent comments e handle */
   overflow: hidden;
 }
 ```
@@ -156,11 +156,11 @@ Logo como background: buscar a LOGO REAL (ver Regra #1), aplicar `opacity: 0.08-
 
 ### Headlines
 
-Fonte Nofex com efeito tipográfico aprovado no Gate 3. Tamanho 70-96px. Efeitos disponíveis em `references/headline-effects.md`.
+Fonte headline (escolhida no Gate 1) com efeito tipográfico aprovado no Gate 3. Tamanho 70-96px. Efeitos disponíveis em `references/headline-effects.md`.
 
-### Crankdat
+### Accent Comments
 
-Comentários com personalidade espalhados pelo slide:
+Comentários com personalidade espalhados pelo slide (fonte accent escolhida no Gate 1):
 - **30-36px** (slides normais), **48px+** (CTA)
 - **Sem parênteses.** "de graça", não "(de graça)"
 - **Posições criativas:** rotações -3° a +8°, variar entre slides
@@ -176,14 +176,18 @@ Comentários com personalidade espalhados pelo slide:
 
 ### Fontes
 
-Ler `references/fonts-config.md`. Resumo: Headlines = Nofex, Accent = Crankdat, Body = Inter.
+Ler `references/fonts-config.md`. A skill usa 3 slots de fonte:
 
-Copiar fontes locais pro diretório de trabalho antes de gerar:
+- **Headline:** fonte bold/display pra títulos (definida no Gate 1)
+- **Accent:** fonte com personalidade pra comentários (definida no Gate 1)
+- **Body:** Inter (Google Fonts, sempre disponível)
+
+Se o usuário tiver fontes locais (.ttf/.otf), copiar pro diretório de trabalho:
 ```bash
-mkdir -p ./fonts && cp ~/Library/Fonts/{Nofex.ttf,Nofex-Outline.ttf,Crankdat-Regular.ttf,Crankdat-Bold.ttf} ./fonts/
+mkdir -p ./fonts && cp ~/Library/Fonts/{FonteHeadline.ttf,FonteAccent.ttf} ./fonts/
 ```
 
-> **Nota:** Se as fontes Nofex e Crankdat não estiverem instaladas, a skill usa fallbacks do Google Fonts automaticamente (Bebas Neue e Space Grotesk). Veja `references/fonts-config.md`.
+Se não tiver, usar combinações do Google Fonts. Veja sugestões em `references/fonts-config.md`.
 
 ---
 
@@ -201,7 +205,7 @@ mkdir -p ./fonts && cp ~/Library/Fonts/{Nofex.ttf,Nofex-Outline.ttf,Crankdat-Reg
 
 Quando um slide precisa ter vídeo rodando (ex: vídeo oficial embedado na capa):
 1. Renderizar o background como PNG separado (gradiente + logo blur)
-2. Renderizar overlay de texto como PNG com `omitBackground: true` (headline, Crankdat, handle)
+2. Renderizar overlay de texto como PNG com `omitBackground: true` (headline, accent comments, handle)
 3. Usar ffmpeg pra compor: `background + vídeo posicionado + overlay transparente`
 
 ---
@@ -212,7 +216,7 @@ Quando um slide precisa ter vídeo rodando (ex: vídeo oficial embedado na capa)
 2. **Centralizado?** Headlines, screenshots, cards e handle centralizados?
 3. **Logos reais?** Capturados de fontes reais, não SVGs genéricos?
 4. **Background rico?** Gradiente + textura + logo blur, não gradiente liso?
-5. **Crankdat OK?** Sem parênteses, 30px+, posições criativas rotacionadas?
+5. **Accent comments OK?** Sem parênteses, 30px+, posições criativas rotacionadas?
 6. **Português natural?** Ler em voz alta. Se soar robótico, reescrever.
 7. **Densidade?** ~65% preenchido em slides de conteúdo. CTA = mínimo.
 
